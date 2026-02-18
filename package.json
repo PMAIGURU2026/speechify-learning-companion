@@ -11,7 +11,11 @@
     "lint": "eslint src --ext .jsx,.js",
     "lint:fix": "eslint src --ext .jsx,.js --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,css,md}\""
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css,md}\"",
+    "mcp:figma": "node mcp-figma-server.js",
+    "mcp:install": "npm install @modelcontextprotocol/server-figma --save-dev",
+    "figma:export": "figma-export build",
+    "figma:watch": "figma-export watch"
   },
   "dependencies": {
     "react": "^18.3.1",
