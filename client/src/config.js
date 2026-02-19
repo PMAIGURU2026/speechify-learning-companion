@@ -1,8 +1,11 @@
 /**
  * API base URL for backend.
- * Set VITE_API_URL in Vercel (or .env) for production; if missing at build time,
- * this fallback is used so the deployed app still hits your Render backend.
+ * Uses VITE_API_URL if set at build time; otherwise at runtime, if we're not on
+ * localhost (i.e. deployed), uses the Render backend URL so it works even when
+ * env wasn't set during build.
  */
+const RENDER_BACKEND = 'https://speechify-learning-companion.onrender.com';
 const envUrl = import.meta.env.VITE_API_URL;
-const productionFallback = 'https://speechify-learning-companion.onrender.com';
-export const API_URL = envUrl || (import.meta.env.PROD ? productionFallback : '');
+const isProduction =
+  typeof window !== 'undefined' && !window.location.hostname.includes('localhost');
+export const API_URL = envUrl || (isProduction ? RENDER_BACKEND : '');
